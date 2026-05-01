@@ -1,1 +1,78 @@
 # aws-production-3tier-cicd
+
+AWS CICD Pipeline :
+It is a major project where most of the things are AWS based
+—> Production Grade Project
+We are going to use CodeBuild,CodeDeploy,CodePipeline
+
+—> Deploy Production-Grade Full stack application
+ 
+Overview:
+(Refer To Diagram)
+-> We’ll be working under AWS - account
+-> Everything happens under isolated network called VPC
+-> Within VPC we have subnets —> we need about 8 subnets for this project
+-> Consider Application as a 3 tier application —> DB,Backend and Frontend
+-> Apart from that we’ll have servers for bastion host to forward traffic from public to private subnets we’ll require gateway helps(intermediary servers)
+-> These help us to create resources in the private subnets without directly exposing them to the internet
+->  DB,Backend and Frontend are in the private subnet(private subnet where IG is not attached Internet Gateway)
+-> To make this app accessible to the users we’ll have public subnets to internally forward traffic to the users
+-> We’ll have VPC and within which we’ll have multiple subnets
+*VPC is regional specific while subnets are zone specific
+—> 2 bastion host —> intermediary server(External users can access the internal app in the private subnet using it)
+—> The 2 bastion host are public subnets while all the below are private subnets
+—> 2 servers for frontend (web-layer)
+—> 2 for backend (app-layer)
+—> 2 for database 
+We’ll have each above in 2 different zones (say 1a and 1b)
+Setting up ASG for webservers
+
+
+*The tech stack can be anything
+*Both backend apps connect to a single db while the other db (in other zone) acts as a backup
+-> this is because db is only one ->as data is consistent
+
+—> We’ll have 2 load balancers -> external and internal load balancer 
+*using external LB the traffic goes to frontend and using the internal LB the traffic is distributed to backend subnets
+Route table and stuff used
+
+—> To collect logs of application we can have/use CloudWatch logs 
+—> We can also have cloud watch alarms and sns  for notifications
+
+-> We’ll also may be use CloudFront or Route53 for dns resolution
+
+People can request to access our application
+
+*We have Jenkins Pipelines so far , but this project is a complete project that will be using only AWS services 
+—> We use CodePipeline for above
+
+*The pattern remains same and can be done later 
+
+Documentation of Steps :
+Create 1 VPC (Subnets - 2 public and 6 private subnets )
+Security Groups(multiple inbound and outbound rules)
+Create s3 bucket for the code
+IAM roles
+Create RDS MySql Database
+Create Application Server for backend
+Create Webserver for frontend
+Create External Load Balancer for webservers
+Create Internal Load Balancer for Application Server
+Setup the ASG (Auto Scaling Groups) for webservers
+Setup the ASG (Auto Scaling Groups) for app servers
+Parameter store for storing secrets(passwords)
+Create s3 Private bucket for Artifacts(reusable files)(jar files)
+
+Configuring Code Build for Application Server
+Configuring Code Deploy for Application Server
+Configuring AWS CodePipeline for Application Server
+
+Configuring Code Build for Web Server
+Configuring Code Deploy for Web Server
+Configuring AWS CodePipeline for Web Server
+
+Build Yaml files where Code build process is specified (specifications.yml) to specify the Cinfigurations
+
+Once App is launched Setup HTTPS —> Setup Route53(if possible)
+
+
