@@ -75,4 +75,44 @@ Build Yaml files where Code build process is specified (specifications.yml) to s
 
 Once App is launched Setup HTTPS —> Setup Route53(if possible)
 
+=========================================================
+Nat gateway is in the public subnet always
+*Always delete the resources to avoid bills
+NAT Gateway is associated with elastic IP therefor it leads to bill generation
+
+SG needs to be configured in order to configure the availability of web-private-subnet
+We’ll create 6 security groups for different purposes
+1 for Jump server
+1 web ALB
+1 app server
+1 web App server
+1 app private (internal) LB
+1 db server
+
+=========================================================
+Operations Performed :
+
+Create A VPC
+Create 8 subnets - 2 public and 6 private 
+Create IGW and attach it to the VPC
+Create Nat Gateway in public subnet 1a and allocate elastic public ip
+Create 2 route tables public-rt and private-rt
+In public-rt attach IGW and associate public subnets
+In private-rt attach NGW and associate the 6 private subnets
+
+*Select public subnets —> action —> subnet settings —> Enable-Auto assign public IP
+
+Now as stated above creation of 6 SG is done
+Attach and provide inbound rules as per diagram
+
+Create an EC2 instance Jump-Server in newly created VPC and attach JUMP server Sg to it
+Create 3 IAM roles for EC2, AWS-CodeBuild, AWS-CodeDeploy and AWS-CodePipeline
+
+For Ec2
+Type - Ec2
+Permissions = CloudWtachLogsFullAccess, CloudWatchAgentServerPolicy, AmazonEc2RoleForAWSCodeDeploy
+Name = multi-tier-ec2role
+
+
+
 
