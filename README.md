@@ -116,7 +116,7 @@ Name = multi-tier-ec2role
 =========================================================
 Operations Performed :
 
-# Create 2 more roles :
+~ Create 2 more roles :
 Multi-tier-codebuild-role
 —>AmazonS3FullAccess (for artifacts)
 —>AmazonCodeBuildAdminAccess
@@ -143,7 +143,7 @@ Use command
 mysql -u <endpoint> -u admin -p
 Enter the password:
 
-Now We are required to create a databseand a user
+Now We are required to create a database and a user
 Create two tables author and books 
 
 
