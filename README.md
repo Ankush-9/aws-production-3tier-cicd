@@ -113,6 +113,39 @@ Type - Ec2
 Permissions = CloudWtachLogsFullAccess, CloudWatchAgentServerPolicy, AmazonEc2RoleForAWSCodeDeploy
 Name = multi-tier-ec2role
 
+=========================================================
+Operations Performed :
+
+# Create 2 more roles :
+Multi-tier-codebuild-role
+—>AmazonS3FullAccess (for artifacts)
+—>AmazonCodeBuildAdminAccess
+—>AmazonSSMReadOnlyAccess (For Parameter Store)
+—>CloudWatchLogsfullaccess
+
+Multi-tier-codedeploy-role
+—>AWSCodeDeployRole
+—>CloudWatchLogsFullAccess
+—>CloudWatcgAgentServerPolicy
+
+Create a SubnetGroup and configure the private db subnets 1a and 1b to it
+
+Create a database of MYSQL FreeTier A to Z ,username = admin , password = any of choice
+Public access ; No
+Security Group : DB-SG
+Encryption: yes
+Also VPC must be : multi-tier-project
+
+Now get connected to Jump-Server 
+Using Ai tools install my sql client
+And using the endpoint of created db connect to the database locally using VM
+Use command
+mysql -u <endpoint> -u admin -p
+Enter the password:
+
+Now We are required to create a databseand a user
+Create two tables author and books 
+
 
 
 
