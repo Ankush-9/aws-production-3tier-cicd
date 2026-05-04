@@ -146,6 +146,33 @@ Enter the password:
 Now We are required to create a database and a user
 Create two tables author and books 
 
+Application Tier (Middle Tier)
+============================================
+Launch Template
+Name : application-tier-LT
+AMI:Amazon Linux 2023
+Type : t2.micro
+SG : App-SG
+Role: multi-tier-ec2-role
+User Data : Node.js,PM2,MariaDB client,CloudWatch,CodeDeploy agent
+
+Target Group
+Name:app-tier-tg
+Protocol:HTTP,Port:3200
+Health Check: /health
+Internal ALB
+Name : app-tier-internal-alb
+Scheme:Internal
+Subnets: Private App Subnets
+Security Group : AppALB-SG
+
+ASG
+Name : application-tier-ASG
+LT:application-tier-LT
+Min: 2, Max:4, Desired:2
+Attach to app-tier-tg
+Scaling Policy: AVG CPU 70%
+
 
 
 
