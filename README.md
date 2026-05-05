@@ -173,6 +173,27 @@ Min: 2, Max:4, Desired:2
 Attach to app-tier-tg
 Scaling Policy: AVG CPU 70%
 
+Web/Presentation tier (Front tier):
+============================================
+Launch Template
+Name: web-tier-Lt
+AMI:Amazon-Linux 2023
+Type:t2.micro
+SG : Web-SG
+Role: Multi-tier-Ec2-role
+UserData : Nginx , CloudWatch , CodeDeploy , proxy to App tier ALB
+
+Target Group
+Name : web-tier-tg
+Protocol : HTTP ,Port : 80
+Heath Check : /health
+
+External ALB
+Name : web-tier-external-ALB
+Scheme : Internet-Facing
+Subnets : Public Web Subnets
+Security Group : WebALB-SG
+
 
 
 
