@@ -146,6 +146,19 @@ Enter the password:
 Now We are required to create a database and a user
 Create two tables author and books 
 
+—> We are done with db and jump server now we need to configure the Application Tier and Web Tier
+Application Tier Setup:
+-> Create launch Template for application tier for ec2 instance
+-> Create empty target group
+-> Create Internal Application Load Balancer
+-> Create Auto Scaling Group
+
+Setup for Web Tier
+-> Create launch Template for application tier for ec2 instance
+-> Create empty target group
+-> Create External Load Balancer
+-> Creae Auto Scaling Group
+
 Application Tier (Middle Tier)
 ============================================
 Launch Template
