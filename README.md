@@ -207,6 +207,21 @@ Scheme : Internet-Facing
 Subnets : Public Web Subnets
 Security Group : WebALB-SG
 
+We’ll be using a parameter for user data  log group name is : node-app-logs-backend
+At the time of machine creation it has been initiated and requires to be created as :
+Serach CloudWatch —> Logs —> Logs group —> We have many created as per user data but we are required to create a missing one
+Create Log group —> node-app-logs-backend —>Create 
+
+It will be the place where all the logs will come and be collected
+
+Now,We are required a buildspec.yml where configurations such as db-passwords,hosts,port no.,db-user,db-name and so on will be added 
+To do so follow as :
+Search System Manager —> To manage and View AWS resources
+—>Application Tools —> Parameter Store —> Create Parameter (It’s a good way to manage the credentials)
+—> 1 for DB passwords —> 1 for host(db location) —> 1 for port no. —>1 for db-user —>1 for db-name
+
+*Only Core Knowledge is sufficient due to tools variation 
+
 
 
 
