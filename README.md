@@ -222,6 +222,53 @@ Search System Manager —> To manage and View AWS resources
 
 *Only Core Knowledge is sufficient due to tools variation 
 
+So continuing with the parameter configuration follow as :
+We’ll be using variables in the Buildspec.yml
+
+First,
+Name: /nodeapp/db/hostname
+Description : as per choice
+Go to RDS —> Copy the endpoint and paste it in Value section—>Create Parameter
+
+Next, 
+Name : /nodeapp/db/name
+Description : as per choice
+—>Value —> Use the database name —> multi-tier-app
+
+Next,
+Name : /nodeapp/db/password
+Description : as per choice
+Value —> The Value to be added here is alien44 —> Create Parameter 
+
+Next,
+Name : /nodeapp/db/port
+Description : As per Choice
+Value : 3306
+
+Next,
+Name : /nodeapp/db/user
+Description : As per choice 
+Value : appuser
+
+Private S3 bucket Creation :
+Go to AWS S3
+Create an S3 bucket
+Name : multi-tier-project-artifacts
+Block all public access and let it be ACLs disabled
+Create the Bucket
+
+This is to be used later…..
+
+Next Operations to be performed are as:
+-> Setup CICD for the project : Configuring CodeBuild for App-tier
+-> Setup CICD for the project : Configuring CodeDeploy for App-tier
+-> Configuring CodePipeline for App-tier
+
+-> Setup CICD for the project : Configuring CodeBuild for Web-tier
+-> Setup CICD for the project : Configuring CodeDeploy for Web-tier
+-> Configuring CodePipeline for Web-tier
+
+-> Using of CloudFront and Route53 (if possible)
 
 
 
