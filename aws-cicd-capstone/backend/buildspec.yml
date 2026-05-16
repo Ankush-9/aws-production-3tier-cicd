@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing Node.js..."
+      - curl -fsSL https://rpm.nodesource.com/setup_18.x | bash -
+      - yum install -y nodejs
+
+  pre_build:
+    commands:
+      - echo "Making deployment scripts executable..."
+      - chmod +x backend/scripts/*.sh
+
+  build:
+    commands:
+      - echo "Running build step (if required)..."
+      # Add commands like npm run build if needed
+
+  post_build:
+    commands:
+      - echo "Build complete. Preparing artifact..."
+
+artifacts:
+  base-directory: backend
+  files:
+    - '**/*'

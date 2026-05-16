@@ -1,0 +1,144 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "title": "The Clockmaker of Hollow Street",
+            "releaseDate": "2012-03-14",
+            "description": "In a quiet Victorian town, a reclusive clockmaker discovers a pocket watch that can rewind time by one minute. When a series of mysterious disappearances plague the town, he must use the device to uncover a haunting secret buried in Hollow Street.",
+            "pages": 298,
+            "name": "Eleanor Whitford",
+            "birthday": "1978-11-09",
+            "bio": "Eleanor Whitford is a British novelist known for her atmospheric historical mysteries. Her works often blend magical realism with intricate character-driven narratives."
+        },
+        {
+            "id": 2,
+            "title": "Starlight Requiem",
+            "releaseDate": "2020-08-22",
+            "description": "After Earth loses contact with its outer colonies, a young starship engineer joins a covert mission to uncover the truth. What she finds is an ancient cosmic force capable of rewriting the laws of physics.",
+            "pages": 412,
+            "name": "Marcus Hale",
+            "birthday": "1985-01-17",
+            "bio": "Marcus Hale is an American science-fiction author celebrated for blending hard science with emotional storytelling. His books frequently explore humanity's place in the universe."
+        },
+        {
+            "id": 3,
+            "title": "Beneath the Willow Veil",
+            "releaseDate": "1999-05-04",
+            "description": "A young painter moves to a remote countryside cottage, only to discover that the willow trees surrounding her home whisper the memories of the dead. As past tragedies unravel, she becomes the key to breaking an ancient curse.",
+            "pages": 265,
+            "name": "Louisa Maren",
+            "birthday": "1969-02-25",
+            "bio": "Louisa Maren is a Canadian author known for her gothic romance novels, rich in atmosphere, lyrical prose, and supernatural undertones."
+        },
+        {
+            "id": 4,
+            "title": "The Last Ember of Winterhold",
+            "releaseDate": "2015-11-30",
+            "description": "In a frozen kingdom fractured by war, a young soldier discovers a dying ember imbued with the essence of a forgotten dragon god. With it, she must unite rival clans to prevent the world from collapsing into eternal frost.",
+            "pages": 534,
+            "name": "Torren Albrecht",
+            "birthday": "1982-07-03",
+            "bio": "Torren Albrecht is a German fantasy writer praised for his expansive world-building and epic story arcs inspired by European folklore."
+        },
+        {
+            "id": 5,
+            "title": "Midnight on Crescent Lane",
+            "releaseDate": "2007-10-18",
+            "description": "A cozy murder mystery set in a seaside village where a retired librarian becomes an unexpected detective after a local baker turns up missing.",
+            "pages": 323,
+            "name": "Catherine Doyle",
+            "birthday": "1958-04-12",
+            "bio": "Catherine Doyle is an Irish author who specializes in charming, slow-burn mysteries that revolve around everyday heroes solving extraordinary crimes."
+        },
+        {
+            "id": 6,
+            "title": "The Astral Cartographer",
+            "releaseDate": "2018-04-09",
+            "description": "A brilliant but socially awkward cartographer discovers he can map emotional states as constellations. When a government agency tries to use his ability for control, he must choose between his gift and his freedom.",
+            "pages": 389,
+            "name": "Yuri Takahashi",
+            "birthday": "1990-12-05",
+            "bio": "Yuri Takahashi is a Japanese speculative fiction writer whose works explore psychology, identity, and surreal metaphysical worlds."
+        },
+        {
+            "id": 7,
+            "title": "Ashes of the Sapphire Empire",
+            "releaseDate": "2003-06-01",
+            "description": "After the collapse of the Sapphire Empire, a young archivist uncovers forbidden documents that reveal the empire was destroyed not by war, but by betrayal from within.",
+            "pages": 602,
+            "name": "Seraphine Lorne",
+            "birthday": "1973-08-14",
+            "bio": "Seraphine Lorne is an award-winning historical fantasy writer whose novels explore political intrigue and the fragility of power."
+        },
+        {
+            "id": 8,
+            "title": "The Glass Garden",
+            "releaseDate": "2021-02-11",
+            "description": "A botanist discovers a hidden greenhouse in the mountains where plants grow from human emotions. As she studies them, she uncovers the truth about her lost sister.",
+            "pages": 347,
+            "name": "Hannah Mireaux",
+            "birthday": "1993-06-28",
+            "bio": "Hannah Mireaux is a French contemporary fantasy author known for her lush, nature-inspired stories and emotionally resonant characters."
+        },
+        {
+            "id": 9,
+            "title": "The Archivist of Broken Dreams",
+            "releaseDate": "2017-09-07",
+            "description": "In a place where people can store their unwanted dreams in a massive archive, a lonely archivist discovers a dream that predicts a devastating future — one only he can prevent.",
+            "pages": 298,
+            "name": "Oliver Kent",
+            "birthday": "1988-03-21",
+            "bio": "Oliver Kent is an English writer whose magical-realist novels explore memory, fate, and the quiet power of the human imagination."
+        },
+        {
+            "id": 10,
+            "title": "A Serenade for the Lost",
+            "releaseDate": "1994-12-03",
+            "description": "A gifted violinist loses her ability to hear music after a tragic accident. When she starts experiencing vivid synesthetic visions, she uncovers a musical code that could rewrite her destiny.",
+            "pages": 251,
+            "name": "Marisol Rivera",
+            "birthday": "1970-09-19",
+            "bio": "Marisol Rivera is a Puerto Rican novelist known for emotionally charged dramas centered around art, healing, and the transformative nature of music."
+        },
+        {
+            "id": 11,
+            "title": "The Whisper Market",
+            "releaseDate": "2008-06-25",
+            "description": "In an underground market where secrets are bought and sold like currency, a streetwise teenager uncovers a conspiracy that threatens to unravel the entire city.",
+            "pages": 364,
+            "name": "Devin Carver",
+            "birthday": "1983-05-30",
+            "bio": "Devin Carver is an American thriller writer who blends noir elements with fast-paced plots and intricate conspiracies."
+        },
+        {
+            "id": 12,
+            "title": "The Lantern at the Edge of the Sea",
+            "releaseDate": "2010-04-19",
+            "description": "A lighthouse keeper discovers a lantern that reveals glimpses of parallel timelines. When one timeline shows her own death, she must uncover which reality is trying to bleed into hers.",
+            "pages": 407,
+            "name": "Rina Solberg",
+            "birthday": "1976-01-11",
+            "bio": "Rina Solberg is a Norwegian author best known for her atmospheric, ocean-themed thrillers and speculative mysteries."
+        },
+        {
+            "id": 13,
+            "title": "The Paper Kingdom",
+            "releaseDate": "2001-02-26",
+            "description": "A young orphan discovers a gateway into a fantastical realm made entirely of paper — one that begins to crumble as he uncovers a truth linking both worlds.",
+            "pages": 245,
+            "name": "Samuel Pierce",
+            "birthday": "1963-10-15",
+            "bio": "Samuel Pierce is an American children's fantasy author, known for whimsical adventures that tackle themes of imagination, courage, and growing up."
+        },
+        {
+            "id": 14,
+            "title": "Voices from the Lanternwood",
+            "releaseDate": "2019-01-12",
+            "description": "Lanternwood Forest is said to be alive — and when a group of hikers enter its depths, they find themselves listening to voices that know their deepest fears and secrets.",
+            "pages": 319,
+            "name": "Arietta Snow",
+            "birthday": "1991-07-22",
+            "bio": "Arietta Snow is an American horror and dark fantasy writer whose work focuses on psychological tension and eerie, atmospheric storytelling."
+        }
+    ]
+}
