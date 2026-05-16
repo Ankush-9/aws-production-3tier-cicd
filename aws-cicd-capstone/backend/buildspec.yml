@@ -3,39 +3,36 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 20  # AWS CodeBuild native runtime configuration for cleaner installations
+      nodejs: 20
     commands:
-      - echo "Navigating to the backend directory..."
-      - cd aws-cicd-capstone/backend
+      - echo "Navigating deep into the backend folder..."
+      - cd aws-production-3tier-cicd/aws-cicd-capstone/backend
       - echo "Installing application dependencies..."
       - npm install
 
   pre_build:
     commands:
       - echo "Making deployment scripts executable..."
-      # Grants execute permissions directly to your lifecycle management hooks
-      - chmod +x aws-cicd-capstone/scripts/*.sh || chmod +x aws-cicd-capstone/backend/scripts/*.sh || echo "Scripts permissions adjusted"
+      - chmod +x aws-production-3tier-cicd/aws-cicd-capstone/scripts/*.sh || chmod +x aws-production-3tier-cicd/aws-cicd-capstone/backend/scripts/*.sh || echo "Scripts permissions adjusted"
 
   build:
     commands:
       - echo "Running build or test configurations if required..."
-      # If your Node.js backend requires compilation (like TypeScript), uncomment the line below:
-      # - cd aws-cicd-capstone/backend && npm run build
 
   post_build:
     commands:
       - echo "Build complete. Injecting CodeDeploy configurations into the backend production bundle..."
-      # Copies deployment configs from the capstone folder directly into the backend folder so they sit at the root of the artifact zip
-      - cp aws-cicd-capstone/appspec.yml aws-cicd-capstone/backend/ || { echo "Failed to copy appspec.yml"; exit 1; }
-      - cp -R aws-cicd-capstone/scripts/ aws-cicd-capstone/backend/ || { echo "Failed to copy scripts directory"; exit 1; }
+      # Copies deployment configs from the nested capstone folder directly into the backend folder so they sit at the root of the artifact zip
+      - cp aws-production-3tier-cicd/aws-cicd-capstone/appspec.yml aws-production-3tier-cicd/aws-cicd-capstone/backend/ || { echo "Failed to copy appspec.yml"; exit 1; }
+      - cp -R aws-production-3tier-cicd/aws-cicd-capstone/scripts/ aws-production-3tier-cicd/aws-cicd-capstone/backend/ || { echo "Failed to copy scripts directory"; exit 1; }
 
 artifacts:
   files:
     - '**/*'
   # Tells CodeBuild exactly where to grab the compiled backend engine from
-  base-directory: aws-cicd-capstone/backend
+  base-directory: aws-production-3tier-cicd/aws-cicd-capstone/backend
   discard-paths: no
 
 cache:
   paths:
-    - 'aws-3tier/aws-cicd/backend/node_modules/**/*'
+    - 'aws-production-3tier-cicd/aws-cicd-capstone/backend/node_modules/**/*'
