@@ -9,30 +9,63 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "Navigating to frontend directory..."
+      - echo "Entering frontend directory..."
       - cd aws-cicd-capstone/frontend
+
+      - echo "Node version:"
+      - node -v
+
+      - echo "NPM version:"
+      - npm -v
+
+      - echo "Cleaning old dependencies and lock files..."
+      - rm -rf node_modules
+      - rm -f package-lock.json
+
       - echo "Installing dependencies..."
       - npm install
 
   pre_build:
     commands:
-      - echo "Creating .env file inside frontend directory..."
-      - echo "VITE_API_URL=\"$VITE_API_URL\"" > aws-cicd-capstone/frontend/.env
-      - echo "Environment variables successfully saved."
+      - echo "Preparing environment variables..."
+      - cd aws-cicd-capstone/frontend
+
+      - echo "VITE_API_URL=$VITE_API_URL" > .env
+
+      - echo "Generated .env file:"
+      - cat .env
+
+      - echo "Verifying important files..."
+      - ls -la
+      - test -f package.json || { echo "package.json not found"; exit 1; }
+      - test -f vite.config.js || test -f vite.config.ts || { echo "vite config missing"; exit 1; }
 
   build:
     commands:
-      - echo "Building React app..."
+      - echo "Starting frontend build..."
       - cd aws-cicd-capstone/frontend
-      - npm run build
+
+      - npm run build || { echo "Frontend build failed"; exit 1; }
+
+      - echo "Checking generated dist folder..."
+      - test -d dist || { echo "dist folder missing"; exit 1; }
+
+      - echo "Build completed successfully."
 
   post_build:
     commands:
-      - echo "Injecting CodeDeploy configuration files..."
+      - echo "Injecting deployment configuration..."
 
-      - cp aws-cicd-capstone/appspec.yml aws-cicd-capstone/frontend/dist/ || { echo "Failed to copy appspec.yml"; exit 1; }
+      - test -f aws-cicd-capstone/appspec.yml || { echo "appspec.yml missing"; exit 1; }
 
-      - cp -R aws-cicd-capstone/scripts aws-cicd-capstone/frontend/dist/ || { echo "Failed to copy scripts directory"; exit 1; }
+      - test -d aws-cicd-capstone/scripts || { echo "scripts directory missing"; exit 1; }
+
+      - cp aws-cicd-capstone/appspec.yml aws-cicd-capstone/frontend/dist/
+
+      - cp -R aws-cicd-capstone/scripts aws-cicd-capstone/frontend/dist/
+
+      - echo "Final dist contents:"
+      - ls -la aws-cicd-capstone/frontend/dist
 
 artifacts:
   files:
