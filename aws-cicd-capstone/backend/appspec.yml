@@ -5,15 +5,17 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "Navigating to the backend directory..."
-      - cd aws-cicd-capstone/backend
+      - echo "Navigating deep into the backend folder..."
+      # Added the repo name prefix here:
+      - cd aws-production-3tier-cicd/aws-cicd-capstone/backend
       - echo "Installing application dependencies..."
       - npm install
 
   pre_build:
     commands:
       - echo "Making deployment scripts executable..."
-      - chmod +x aws-cicd-capstone/scripts/*.sh || chmod +x aws-cicd-capstone/backend/scripts/*.sh || echo "Scripts permissions adjusted"
+      # Added the repo name prefix here:
+      - chmod +x aws-production-3tier-cicd/aws-cicd-capstone/scripts/*.sh || chmod +x aws-production-3tier-cicd/aws-cicd-capstone/backend/scripts/*.sh || echo "Scripts permissions adjusted"
 
   build:
     commands:
@@ -22,16 +24,18 @@ phases:
   post_build:
     commands:
       - echo "Build complete. Injecting CodeDeploy configurations into the backend production bundle..."
-      - cp aws-cicd-capstone/appspec.yml aws-cicd-capstone/backend/ || { echo "Failed to copy appspec.yml"; exit 1; }
-      - cp -R aws-cicd-capstone/scripts/ aws-cicd-capstone/backend/ || { echo "Failed to copy scripts directory"; exit 1; }
+      # Added the repo name prefix here so the files copy successfully:
+      - cp aws-production-3tier-cicd/aws-cicd-capstone/appspec.yml aws-production-3tier-cicd/aws-cicd-capstone/backend/ || { echo "Failed to copy appspec.yml"; exit 1; }
+      - cp -R aws-production-3tier-cicd/aws-cicd-capstone/scripts/ aws-production-3tier-cicd/aws-cicd-capstone/backend/ || { echo "Failed to copy scripts directory"; exit 1; }
 
 artifacts:
   files:
     - '**/*'
-  base-directory: aws-cicd-capstone/backend
+  # Added the repo name prefix here so CodeBuild knows exactly what to zip up:
+  base-directory: aws-production-3tier-cicd/aws-cicd-capstone/backend
   discard-paths: no
 
 cache:
   paths:
-    # UPDATED: Now points to the correct location to save your node_modules between builds
-    - 'aws-cicd-capstone/backend/node_modules/**/*'
+    # Added the repo name prefix here so your cache functions properly:
+    - 'aws-production-3tier-cicd/aws-cicd-capstone/backend/node_modules/**/*'
