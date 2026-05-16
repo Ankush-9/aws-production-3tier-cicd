@@ -9,35 +9,37 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "Navigating to the nested frontend directory..."
-      - cd aws-production-3tier-cicd/aws-cicd-capstone/frontend
+      - echo "Navigating to frontend directory..."
+      - cd aws-cicd-capstone/frontend
       - echo "Installing dependencies..."
       - npm install
 
   pre_build:
     commands:
-      - echo "Creating .env file inside the frontend directory..."
-      - echo "VITE_API_URL=\"$VITE_API_URL\"" > aws-production-3tier-cicd/aws-cicd-capstone/frontend/.env
+      - echo "Creating .env file inside frontend directory..."
+      - echo "VITE_API_URL=\"$VITE_API_URL\"" > aws-cicd-capstone/frontend/.env
       - echo "Environment variables successfully saved."
 
   build:
     commands:
-      - echo "Navigating to frontend and building the React app..."
-      - cd aws-production-3tier-cicd/aws-cicd-capstone/frontend
+      - echo "Building React app..."
+      - cd aws-cicd-capstone/frontend
       - npm run build
 
   post_build:
     commands:
-      - echo "Build completed. Injecting CodeDeploy configurations into the production bundle..."
-      - cp aws-production-3tier-cicd/aws-cicd-capstone/appspec.yml aws-production-3tier-cicd/aws-cicd-capstone/frontend/dist/ || { echo "Failed to copy appspec.yml"; exit 1; }
-      - cp -R aws-production-3tier-cicd/aws-cicd-capstone/scripts/ aws-production-3tier-cicd/aws-cicd-capstone/frontend/dist/ || { echo "Failed to copy scripts directory"; exit 1; }
+      - echo "Injecting CodeDeploy configuration files..."
+
+      - cp aws-cicd-capstone/appspec.yml aws-cicd-capstone/frontend/dist/ || { echo "Failed to copy appspec.yml"; exit 1; }
+
+      - cp -R aws-cicd-capstone/scripts aws-cicd-capstone/frontend/dist/ || { echo "Failed to copy scripts directory"; exit 1; }
 
 artifacts:
   files:
     - '**/*'
-  base-directory: aws-production-3tier-cicd/aws-cicd-capstone/frontend/dist
+  base-directory: aws-cicd-capstone/frontend/dist
   discard-paths: no
 
 cache:
   paths:
-    - 'aws-production-3tier-cicd/aws-cicd-capstone/frontend/node_modules/**/*'
+    - 'aws-cicd-capstone/frontend/node_modules/**/*'
